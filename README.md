@@ -12,7 +12,7 @@ pip install gle_ip
 
 ## Usage
 '''
-from lgeip import IP
+from gleip import IP
 
 Ip = IP()
 
