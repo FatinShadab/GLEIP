@@ -1,4 +1,4 @@
-# gleip
+# gle_ip_info
 
 glip is a module for retrieve ip address like local-ip, global-ip, external-ip as string.
 
@@ -7,12 +7,12 @@ glip is a module for retrieve ip address like local-ip, global-ip, external-ip a
 Run the following to install:
 
 '''python
-pip install gle_ip
+pip install gle_ip_info
 '''
 
 ## Usage
 '''
-from gleip import IP
+from gle_ip_info import IP
 
 Ip = IP()
 
