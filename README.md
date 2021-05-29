@@ -14,7 +14,11 @@ pip install gle_ip_info
 '''
 from gle_ip_info import IP
 
-Ip = IP()
+Ip = IP() # Initialize the IP class
+
+os = Ip.Os # To get your os info.
+
+dev = Ip.devices # Gives connected devices as list.
 
 local_ip = Ip.get_local_ip() # TO get your local ipaddress.
 
