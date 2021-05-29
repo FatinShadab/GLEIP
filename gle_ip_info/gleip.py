@@ -49,7 +49,13 @@ import upnpclient
 class IP:
     '''A class for retrieve ipaddress <local_ip/global_ip/external_ip_1>.(***Supported Os's are i)Windows, ii)Linux***)'''
     def __init__(self):
-        '''******'''
+        '''
+        ***initialize the IP class***
+
+        Os = your os sys.
+        devices = connected devices as a list
+        
+        '''
         self.custom_ip_Error = ''  
         self.Os = platform.system()
         self.Os_tuple = ('Windows', 'Linux')
@@ -69,14 +75,21 @@ class IP:
         '''A function to retrieve ipaddress from <os._wrap_close object> as str (***if os is win32/64***)'''
         data = self.stream.readlines()
 
-        dict = {}
-        for index, line in enumerate(data):
-            dict[index] = line
+        data_dict = {}
+        processed_data_list = []
 
-        raw_ip_str = dict[23]
-        ip_list = list(raw_ip_str)
-        ip_addrs = ip_list[39:(len(ip_list)-1)]
-        ip = ('{}'*len(ip_addrs)).format(*ip_addrs)
+        for line in data:
+            line = line.rstrip()
+            processed_data_list.append(line)
+    
+        for data in processed_data_list:
+            try:
+                data = (data.split(':'))
+                data_dict[data[0]] = data[1]
+            except:
+                pass
+    
+        ip = data_dict['   IPv4 Address. . . . . . . . . . . ']
     
         return ip
 
@@ -111,7 +124,18 @@ class IP:
         return global_ip
 
     def get_external_ip(self, device_No=0):
-        '''Function for retrieve connected device's external IpAddress.'''
+        '''Function for retrieve connected device's external IpAddress.
+        If there are more than one conntected device you can use the device_No Perimeter. 
+        demo:
+
+        from gle_ip_info import IP
+
+        Ip = IP()
+        dec = Ip.devices
+
+        if len(dev) > 1:
+            print(Ip.get_external_ip(device_No=1))
+        '''
         try:
             if(len(self.devices) > 0):
                 externalIP = self.devices[device_No].WANIPConn1.GetExternalIPAddress()
