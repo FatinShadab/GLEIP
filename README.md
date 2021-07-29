@@ -32,7 +32,7 @@ It use's -->
 '''
     --> os module,
     --> requests module,
-    --> platfrom module,
+    --> platform module,
     --> upnpclient module.
 
 ***Local_IP is collected from the cmd(in Windows) or Bash-Terminal(in Linux) using 'ipconfig'/ 
